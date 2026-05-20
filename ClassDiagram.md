@@ -20,10 +20,10 @@ classDiagram
 
     class 캐릭터 {
         <<abstract>>
-        #캐릭터명: String
-        #레벨: int
-        #HP: int
-        #공격력: int
+        -캐릭터명: String
+        -레벨: int
+        -HP: int
+        -공격력: int
         +스킬발동()* int
     }
 
