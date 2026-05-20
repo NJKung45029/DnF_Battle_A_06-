@@ -12,11 +12,6 @@ graph LR
     Actor --> UC1
     Actor --> UC2
 
-    UC1 -. "<<include>>" .-> UC3
-    UC2 -. "<<include>>" .-> UC3
-
-    %% 스타일링 (시각적 구분)
-    style Actor fill:#f9f,stroke:#333,stroke-width:2px
-    style UC1 fill:#e1f5fe,stroke:#03a9f4,stroke-width:2px
-    style UC2 fill:#e1f5fe,stroke:#03a9f4,stroke-width:2px
-    style UC3 fill:#fff3e0,stroke:#ff9800,stroke-width:2px
+    %% include 관계 설정 표기 (HTML 엔티티 반영)
+    UC1 -. "&lt;&lt;include&gt;&gt;" .-> UC3
+    UC2 -. "&lt;&lt;include&gt;&gt;" .-> UC3
