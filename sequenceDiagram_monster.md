@@ -1,9 +1,11 @@
+## 몬스터공격 Sequence Diagram
+
+```mermaid
 sequenceDiagram
     actor 사용자 as 플레이어
     participant UI as Attack_Monster_UI
     participant Battle as 전투
     participant Player as 플레이어
-    participant Character as 캐릭터
     participant Warrior as 전사
     participant Mage as 마법사
 
@@ -29,3 +31,4 @@ sequenceDiagram
         Battle-->>UI: 몬스터공격 결과 반환
         UI-->>사용자: 공격 결과 출력
     end
+```
