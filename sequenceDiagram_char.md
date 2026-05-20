@@ -1,9 +1,11 @@
+## 캐릭터생성 Sequence Diagram
+
+```mermaid
 sequenceDiagram
     actor 사용자 as 플레이어
     participant UI as Create_Character_UI
     participant Battle as 전투
     participant Player as 플레이어
-    participant Character as 캐릭터
     participant Warrior as 전사
     participant Mage as 마법사
 
@@ -32,3 +34,4 @@ sequenceDiagram
         Battle-->>UI: 캐릭터생성 실패
         UI-->>사용자: 직업 오류 메시지 출력
     end
+```
