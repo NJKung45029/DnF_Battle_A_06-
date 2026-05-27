@@ -1,6 +1,13 @@
-```mermaid
 classDiagram
     %% Boundary 클래스 (UI 화면)
+    class Create_Character_UI {
+        <<boundary>>
+        +요청_캐릭터생성()
+    }
+    class Attack_Monster_UI {
+        <<boundary>>
+        +요청_몬스터공격()
+    }
     class Add_item {
         <<boundary>>
         +요청_아이템획득()
@@ -10,19 +17,19 @@ classDiagram
         +요청_길드가입()
     }
 
-    %% Phase 1 재사용 및 제어 클래스
+    %% Phase 1 재사용 클래스
     class 플레이어 {
-        -플레이어id: String
-        +플레이어체크(플레이어id: String) boolean
+        -String 플레이어id
+        +플레이어체크(String id) boolean
     }
 
     class 캐릭터 {
         <<abstract>>
-        -캐릭터명: String
-        -레벨: int
-        -HP: int
-        -공격력: int
-        -인벤토리: 인벤토리
+        -String 캐릭터명
+        -int 레벨
+        -int HP
+        -int 공격력
+        -인벤토리 인벤토리객체
         +스킬발동()* int
     }
 
@@ -35,47 +42,48 @@ classDiagram
     }
 
     class 전투 {
-        -플레이어객체: 플레이어
-        -플레이어id: String
-        +캐릭터생성(플레이어id: String, 캐릭터명: String, 직업: String, 레벨: int) 캐릭터
-        +몬스터공격(캐릭터객체: 캐릭터) String
-        +아이템획득(플레이어id: String, 캐릭터객체: 캐릭터, 아이템명: String, 타입: String, 가치: int) String
-        +길드가입(플레이어id: String, 캐릭터객체: 캐릭터, 길드객체: 길드) String
+        -플레이어 플레이어객체
+        -String 플레이어id
+        +캐릭터생성(String id, String 명, String 직업, int 레벨) 캐릭터
+        +몬스터공격(캐릭터 c) String
     }
 
     %% Phase 2 신규 클래스
     class 인벤토리 {
-        -아이템리스트: List~아이템~
-        -최대용량: int = 10
-        +아이템추가(새아이템: 아이템) boolean
+        -List~아이템~ 아이템리스트
+        -int 최대용량 = 10
+        +아이템추가(아이템 새아이템) boolean
     }
 
     class 아이템 {
-        -아이템명: String
-        -타입: String
-        -가치: int
-        -등급: String
+        -String 아이템명
+        -String 타입
+        -int 가치
+        -String 등급
     }
 
     class 길드 {
-        -길드명: String
-        -캐릭터리스트: List~캐릭터~
-        -최대인원: int = 5
-        +캐릭터가입(캐릭터객체: 캐릭터) boolean
+        -String 길드명
+        -List~캐릭터~ 캐릭터리스트
+        -int 최대인원 = 5
+        +캐릭터타입() void
     }
 
-    %% 상속 관계
-    캐릭터 <|-- 전사
-    캐릭터 <|-- 마법사
+    %% 상속 관계 (Inheritance)
+    캐릭터 <|-- 전사 : 상속
+    캐릭터 <|-- 마법사 : 상속
 
-    %% 복합 관계 (문법 에러 방지를 위해 가독성 정돈)
+    %% 복합 관계 (Composition & Aggregation)
     캐릭터 "1" *--> "1" 인벤토리 : 인벤토리_합성화
-    인벤토리 "1" *--> "*" 아이템 : 아이템리스트_1toN
-    길드 "1" o--> "*" 캐릭터 : 캐릭터리스트_1toN
+    인벤토리 "1" *--> "*" 아이템 : 아이템리스트_1대N_합성화
+    길드 "1" o--> "*" 캐릭터 : 캐릭터리스트_1대N_집단화
 
-    %% UI 및 제어 관계
-    Add_item ..> 전투 : 의존
-    Join_Guild_UI ..> 전투 : 의존
+    %% UI Boundary 및 제어 클래스 간의 관계 (Dependency)
+    Create_Character_UI ..> 전투 : 참조
+    Attack_Monster_UI ..> 전투 : 참조
+    Add_item ..> 전투 : 참조
+    Join_Guild_UI ..> 전투 : 참조
+
     전투 "1" o--> "1" 플레이어 : 플레이어객체_소유
     전투 ..> 캐릭터 : 제어
     전투 ..> 길드 : 제어
