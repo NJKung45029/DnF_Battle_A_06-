@@ -1,3 +1,4 @@
+```mermaid
 classDiagram
     %% Boundary 클래스 (UI 화면)
     class Create_Character_UI {
