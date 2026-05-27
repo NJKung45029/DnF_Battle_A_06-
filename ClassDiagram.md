@@ -31,6 +31,7 @@ classDiagram
         -int HP
         -int 공격력
         -인벤토리 인벤토리객체
+	-길드 길드객체
         +스킬발동()* int
     }
 
@@ -52,7 +53,7 @@ classDiagram
     %% Phase 2 신규 클래스
     class 인벤토리 {
         -List~아이템~ 아이템리스트
-        -int 최대용량 = 10
+        -int 최대칸수 = 10
         +아이템추가(아이템 새아이템) boolean
     }
 
