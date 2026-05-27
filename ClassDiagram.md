@@ -58,7 +58,7 @@ classDiagram
 
     class 아이템 {
         -String 아이템명
-        -String 타입
+        -String 종류
         -int 가치
         -String 등급
     }
