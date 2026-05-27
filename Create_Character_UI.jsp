@@ -69,8 +69,12 @@
             <p>레벨: <%= 캐릭터객체.get레벨() %></p>
             <p>HP: <%= 캐릭터객체.getHP() %></p>
             <p>공격력: <%= 캐릭터객체.get공격력() %></p>
+            <p>길드: <%= 캐릭터객체.get길드명() %></p>
+            <p>인벤토리: <%= 캐릭터객체.get인벤토리객체().get현재칸수() %> / <%= 캐릭터객체.get인벤토리객체().get최대칸수() %></p>
 
-            <a href="Attack_Monster_UI.jsp">몬스터공격 하러 가기</a>
+            <a href="Attack_Monster_UI.jsp">몬스터공격 하러 가기</a> |
+            <a href="Get_Item_UI.jsp">아이템획득 하러 가기</a> |
+            <a href="Join_Guild_UI.jsp">길드가입 하러 가기</a>
 <%
         }
     }

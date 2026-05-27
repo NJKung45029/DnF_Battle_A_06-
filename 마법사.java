@@ -11,6 +11,7 @@ public class 마법사 extends 캐릭터 {
         return (int)(get공격력() * 2.0);
     }
 
+    @Override
     public String 스킬명() {
         return "파이어볼";
     }

@@ -11,6 +11,7 @@ public class 전사 extends 캐릭터 {
         return (int)(get공격력() * 1.5);
     }
 
+    @Override
     public String 스킬명() {
         return "검휘두르기";
     }
