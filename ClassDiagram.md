@@ -33,21 +33,28 @@ classDiagram
         -인벤토리 인벤토리객체
 	-길드 길드객체
         +스킬발동()* int
+	+스킬명()* String
     }
 
     class 전사 {
         +스킬발동() int
+	+스킬명() String
     }
 
     class 마법사 {
         +스킬발동() int
+	+스킬명() String
     }
 
     class 전투 {
         -플레이어 플레이어객체
         -String 플레이어id
+	-캐릭터 현재캐릭터
+	-길드 길드객체
         +캐릭터생성(String id, String 명, String 직업, int 레벨) 캐릭터
         +몬스터공격(캐릭터 c) String
+	+아이템획득(캐릭터 캐릭터, String 아이템명, int 아이템가치)
+	+길드가입(캐릭터 캐릭터, String 길드명)
     }
 
     %% Phase 2 신규 클래스
@@ -55,6 +62,7 @@ classDiagram
         -List~아이템~ 아이템리스트
         -int 최대칸수 = 10
         +아이템추가(아이템 새아이템) boolean
+	+아이템목록출력() String
     }
 
     class 아이템 {
@@ -68,7 +76,9 @@ classDiagram
         -String 길드명
         -List~캐릭터~ 캐릭터리스트
         -int 최대인원 = 5
-        +캐릭터타입() void
+        +가입가능여부(캐릭터 캐릭터객체) boolean
+	+길드가입(캐릭터 캐릭터객체) boolean
+	+길드원목록출력() String
     }
 
     %% 상속 관계 (Inheritance)
